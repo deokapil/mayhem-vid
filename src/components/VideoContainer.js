@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 const VideoContainer = ({ video }) => {
   const router = useRouter();
   const [connected, setConnected] = useState(false);
-  console.log(video);
 
   useEffect(() => {
     const socket = new ClientIO(process.env.NEXT_PUBLIC_SITE_URL, {

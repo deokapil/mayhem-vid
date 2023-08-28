@@ -1,12 +1,9 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import { errorCodes } from "@/lib/ErrorCodes";
 import Link from "next/link";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 
-const page = async ({ searchParams }) => {
+const MayhemError = async ({ searchParams }) => {
   const { code, videoId } = searchParams;
-  const [retryCounter, setRetryCounter] = useState(30);
 
   return (
     <div className="container mx-auto bg-black p-6 mb-12 ">
@@ -44,4 +41,4 @@ const page = async ({ searchParams }) => {
   );
 };
 
-export default page;
+export default MayhemError;

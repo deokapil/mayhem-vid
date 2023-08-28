@@ -5,7 +5,7 @@ import NotPlaying from "@/components/NotPlaying";
 import VideoContainer from "@/components/VideoContainer";
 import Link from "next/link";
 
-const page = async ({ searchParams }) => {
+const Watch = async ({ searchParams }) => {
   const { video } = searchParams;
   const res = await getVideoById(video);
 
@@ -29,4 +29,4 @@ const page = async ({ searchParams }) => {
   );
 };
 
-export default page;
+export default Watch;
