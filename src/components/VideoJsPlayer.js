@@ -2,13 +2,14 @@
 import React from "react";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
+import { useRouter } from "next/navigation";
 
-export const VideoJsPlayer = ({ url }) => {
+export const VideoJsPlayer = ({ url, videoId }) => {
   const videoRef = React.useRef(null);
   const playerRef = React.useRef(null);
   //   const {options, onReady} = props;
-  console.log(url);
 
+  const router = useRouter();
   React.useEffect(() => {
     const options = {
       autoplay: true,
@@ -17,7 +18,7 @@ export const VideoJsPlayer = ({ url }) => {
       fluid: true,
       sources: [
         {
-          src: url,
+          src: `${process.env.NEXT_PUBLIC_LIVE_URL}${url}`,
           type: "application/x-mpegURL",
         },
       ],
@@ -33,7 +34,9 @@ export const VideoJsPlayer = ({ url }) => {
       const player = (playerRef.current = videojs(videoElement, options, () => {
         videojs.log("player is ready");
       }));
-
+      // player.on("error", function () {
+      //   router.push(`/err?code=1004&videoId=${videoId}`);
+      // });
       // You could update an existing player in the `else` block here
       // on prop change, for example:
     } else {
