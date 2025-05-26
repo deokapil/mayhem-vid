@@ -19,7 +19,7 @@ const Watch = async ({ searchParams }) => {
         </Link>
       </div>
       <div className="my-2">
-        {res.state == "playing" ? (
+        {res.state != "finished" ? (
           <VideoContainer video={res} />
         ) : (
           <NotPlaying />

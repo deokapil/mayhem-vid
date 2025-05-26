@@ -3,21 +3,11 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import CardList from "./CardList";
 
-const VideoList = () => {
-  const [videosPlaying, setVideosPlaying] = React.useState(null);
-  const [videosScheduled, setVideosScheduled] = React.useState(null);
-  useEffect(() => {
-    axios.get(`/api/videos`).then((data) => {
-      console.log(data);
-      setVideosPlaying(
-        data.data.videos.filter((video) => video.state == "playing")
-      );
-      setVideosScheduled(
-        data.data.videos.filter((video) => video.state == "scheduled")
-      );
-    });
-  }, []);
-
+const VideoList = ({ videoList }) => {
+  const videosPlaying = videoList.filter((video) => video.state == "playing");
+  const videosScheduled = videoList.filter(
+    (video) => video.state == "scheduled"
+  );
   return (
     <>
       <div>

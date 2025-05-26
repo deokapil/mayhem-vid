@@ -2,29 +2,30 @@ import React from "react";
 import Title from "./Title";
 import { BsCollectionFill } from "react-icons/bs";
 import Link from "next/link";
+import { Thumbnail } from "./Tumbnail";
+import { VideoDescription, VideoTitle } from "./VideoComponents";
 
 const CardList = ({ videos, title }) => {
   return (
     <>
       <Title title={title} Icon={BsCollectionFill} />
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+      <div className=" mx-auto grid grid-cols-1 gap-x-4 gap-y-8 md:mx-0 md:max-w-none md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:max-w-none xl:grid-cols-3 2xl:mx-0 2xl:max-w-none 2xl:grid-cols-3">
         {videos.map((video) => {
           return (
-            <div
-              key={video.title}
-              className="card w-96 bg-fuchsia-600 shadow-xl"
+            <Link
+              href={`/watch?video=${video.id}`}
+              className="flex flex-col items-start justify-between hover:bg-gray-900"
+              key={video.id}
             >
-              <div className="card-body">
-                <h2 className="card-title">{video.title}</h2>
-                <div className="card-actions justify-end">
-                  {video.state == "playing" ? (
-                    <Link href={`/watch?video=${video.id}`}>
-                      <button className="btn btn-primary">Watch Now</button>
-                    </Link>
-                  ) : null}
+              <div className="relative w-full">
+                <Thumbnail video={video} />
+                <div className=" max-w-xl ">
+                  <div className="items-top relative mt-4 flex gap-x-4 ">
+                    <VideoTitle title={video.title} limitHeight={true} />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

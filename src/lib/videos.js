@@ -8,6 +8,7 @@ export async function getVideoList() {
 }
 
 export async function getVideoById(id) {
+  console.log(`${process.env.MAYHEM_URL}/videos/${id}`);
   const response = await fetch(`${process.env.MAYHEM_URL}/videos/${id}`, {
     next: { cache: "no-store", revalidate: 0 },
   });

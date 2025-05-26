@@ -18,7 +18,7 @@ export const VideoJsPlayer = ({ url, videoId }) => {
       fluid: true,
       sources: [
         {
-          src: `${process.env.NEXT_PUBLIC_LIVE_URL}${url}`,
+          src: `${url}`,
           type: "application/x-mpegURL",
         },
       ],

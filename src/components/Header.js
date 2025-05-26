@@ -2,16 +2,17 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <header className="p-2">
-      <div className="relative">
+    <div className="bg-main shadow-lg sticky top-0 z-20 bg-slate-950">
+      <div className="container mx-auto py-6 px-2 lg:grid gap-10 justify-between items-center">
         <Image
-          className="object-contain"
+          className="w-full h-12 object-contain"
           src="/MM_logo.png"
-          height={80}
-          width={80}
+          height={60}
+          width={60}
+          alt="Mayhem Logo"
         />
       </div>
-    </header>
+    </div>
   );
 };
 
